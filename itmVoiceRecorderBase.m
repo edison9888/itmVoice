@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 JoinUs.Clint.Lin. All rights reserved.
 //
 
-#import "VoiceRecorderBase.h"
+#import "itmVoiceRecorderBase.h"
 
 @interface VoiceRecorderBase ()
 @end
