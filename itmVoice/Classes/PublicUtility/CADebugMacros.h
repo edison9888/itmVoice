@@ -103,6 +103,14 @@
 		#define DebugMessageN2(msg, N1, N2)
 		#define DebugMessageN3(msg, N1, N2, N3)
 	#else
+
+/*
+ COCOAPODS=1
+ select the Target（itmVoice in pod）, open the Build Settings pane, search for "Preprocessor Macros".
+ Leave the fields blank (I've got rid of a DEBUG entry)
+ 
+ also dont foget add libc++ in your project
+ */
 		#include "CADebugPrintf.h"
 		
 		#if	(CoreAudio_FlushDebugMessages && !CoreAudio_UseSysLog) || defined(CoreAudio_UseSideFile)

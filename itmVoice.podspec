@@ -1,129 +1,71 @@
-#
-#  Be sure to run `pod spec lint itmVoice.podspec' to ensure this is a
-#  valid spec and to remove all comments including this before submitting the spec.
-#
-#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
-#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
-#
 
 Pod::Spec.new do |s|
 
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  These will help people to find your library, and whilst it
-  #  can feel like a chore to fill in it's definitely to your advantage. The
-  #  summary should be tweet-length, and the description more in depth.
-  #
-
   s.name         = "itmVoice"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "voice record and play, using speed and ogg."
+  s.description  = "This version has setted as document.And also I has added missing parts :)"
 
-  s.description  = "voice record and play, using speed and ogg. New version add missing parts :)"
-
-  s.homepage     = "https://github.com/Clintlin/itmVocie"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
-
-
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Licensing your code is important. See http://choosealicense.com for more info.
-  #  CocoaPods will detect a license file if there is a named LICENSE*
-  #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
-  #
-
-  # s.license      = "MIT"
+  s.homepage     = "https://github.com/Clintlin/itmVoice"
   s.license      = { :type => "MIT", :file => "LICENSE.txt" }
-
-
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors are extracted from the SCM log. E.g. $ git log. CocoaPods also
-  #  accepts just a name if you'd rather not provide an email address.
-  #
-  #  Specify a social_media_url where others can refer to, for example a twitter
-  #  profile URL.
-  #
-
   s.author             = { "Clint" => "linguanjie@gmail.com" }
-  # Or just: s.author    = "Clint"
-  # s.authors            = { "Clint" => "linguanjie@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/Clint"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
-
-  # s.platform     = :ios
   s.platform     = :ios, "8.0"
 
-  #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
 
 
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the location from where the source should be retrieved.
-  #  Supports git, hg, bzr, svn and HTTP.
-  #
+  s.source       = { :git => "https://github.com/Clintlin/itmVoice.git", :tag => "1.0.2" }
+  #set Classes
 
-  s.source       = { :git => "https://github.com/Clintlin/itmVocie.git", :tag => "1.0.1" }
+  s.subspec 'Classes' do |cls|
+    cls.source_files = "itmVoice/Classes/*"
 
+    # add Codec dir
+    cls.subspec 'Codec' do |code|
+      code.source_files = "itmVoice/Classes/Codec/*"
+    end
 
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any h, m, mm, c & cpp files. For header
-  #  files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
-
-  s.source_files = "itmVoiceRecorderBase.{h,m}"
-  s.exclude_files = "Classes/*","Libs/*"
-
-  # s.public_header_files = "Classes/**/*.h"
+    # add PublicUtility
+    cls.subspec 'PublicUtility' do |p|
+      p.source_files = "itmVoice/Classes/PublicUtility/*"
+    end
+  end
 
 
-  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  A list of resources included with the Pod. These are copied into the
-  #  target bundle with a build phase script. Anything else will be cleaned.
-  #  You can preserve files from being cleaned, please don't preserve
-  #  non-essential files like tests, examples and documentation.
-  #
+  #set Libs
 
-  # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+  s.subspec 'Libs' do |lib|
+    lib.source_files = "itmVoice/Libs/config.h"
 
-  # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
+    # add libogg
+    lib.subspec 'libogg' do |ogg|
+      ogg.source_files = "itmVoice/Libs/libogg/*"
+
+      # add ogg
+      ogg.subspec 'ogg' do |ogg_|
+        ogg_.source_files = "itmVoice/Libs/libogg/ogg/*"
+      end
+
+    end
+
+    # add libspeex
+    lib.subspec 'libspeex' do |lx|
+      lx.source_files = "itmVoice/Libs/libspeex/*"
+
+      # add speex
+      lx.subspec 'speex' do |x|
+        x.source_files = "itmVoice/Libs/libspeex/speex/*.h"
+      end
+
+    end
+    
+  end
+
+  s.source_files = "itmVoice/itmVoiceRecorderBase.{h,m}"
+  s.requires_arc = true
 
 
-  # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Link your library with frameworks, or libraries. Libraries do not include
-  #  the lib prefix of their name.
-  #
+  # add some libs
+  
 
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
-
-  # s.library   = "iconv"
-  # s.libraries = "iconv", "xml2"
-
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If your library depends on compiler flags you can set them in the xcconfig hash
-  #  where they will only apply to your library. If you depend on other Podspecs
-  #  you can include multiple dependencies to ensure it works.
-
-  s.requires_arc = false
-
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
 
 end
