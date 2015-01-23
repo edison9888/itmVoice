@@ -16,17 +16,10 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "itmVoice"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "voice record and play, using speed and ogg."
 
-  s.description  = <<-DESC
-                   A longer description of itmVoice in Markdown format.
-
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+  s.description  = "voice record and play, using speed and ogg. New version add missing parts :)"
 
   s.homepage     = "https://github.com/Clintlin/itmVocie"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -78,7 +71,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Clintlin/itmVocie.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/Clintlin/itmVocie.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,7 +83,7 @@ Pod::Spec.new do |s|
   #
 
   s.source_files = "itmVoiceRecorderBase.{h,m}"
-  #s.exclude_files = ""
+  s.exclude_files = "Classes/*","Libs/*"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -128,7 +121,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+  s.requires_arc = false
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
